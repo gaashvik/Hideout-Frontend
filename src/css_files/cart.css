@@ -1,0 +1,37 @@
+/* Positioning the cart icon at the bottom left of the page */
+.fixed {
+    position: fixed;
+    bottom: 4rem; /* Adjust as needed */
+    right: 1rem; /* Adjust as needed */
+  }
+  
+  /* Cart Icon Styles */
+  .bg-primary {
+    background-color: #3498db; /* Customize the color */
+  }
+  
+  .text-white {
+    color: #fff;
+  }
+  
+  .rounded-full {
+    border-radius: 50%;
+  }
+  
+  .text-xl {
+    font-size: 1.5rem; /* Customize size */
+  }
+  
+  /* Cart Count Badge Styles */
+  .bg-red-600 {
+    background-color: #e74c3c; /* Red background for badge */
+  }
+  
+  .text-xs {
+    font-size: 0.75rem; /* Adjust text size */
+  }
+  
+  .rounded-full {
+    border-radius: 50%;
+  }
+  

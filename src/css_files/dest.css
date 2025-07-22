@@ -1,0 +1,181 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+.box{
+    border-radius: 15px;
+    margin: 3px 3px 3px 3px;
+    scroll-behavior: smooth;
+}
+.bree-serif-regular {
+    font-family: "Bree Serif", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+}
+.poppins-regular {
+    font-family: "Poppins", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+.poppins-extralight {
+    font-family: "Poppins", serif;
+    font-weight: 200;
+    font-style: normal;
+  }
+  .poppins-bold {
+    font-family: "Poppins", serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+  .head{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 35px;
+  }
+
+.container{
+    margin-left: 80px;
+    height: 95vh;
+    width: 95vw;
+    border-left: 10px;
+    border-radius: 15px;
+    background-color:#eef0eb;
+    display: grid;
+    padding: 20px 20px 20px 20px;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+.left{
+    grid-column: 1 / 2 ;
+    grid-row: 1 / 6;
+    background-color:#eef0eb;
+
+}
+.right-top{
+    grid-column: 2 / 4;
+    grid-row: 1 / 7;
+    background-color:#190602 ;
+    overflow: auto;
+}
+.left-middle{
+    grid-column: 1 / 2;
+    grid-row:6 / 7;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 3px;
+
+}
+.icon{
+    padding-top: 10px;
+    height:100%;
+    width:30%;
+    margin-right: 5px;
+    margin-left: 3px;
+
+}
+#map{
+    width:100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+}
+.left-bottom{
+    grid-column:1 / 2;
+    grid-row:7/ 11;
+    background-color:#eef0eb;
+}
+.right-bottom{
+    grid-column: 2 / 4;
+    grid-row: 7 / 11;
+    background-color: #cebc9d;
+    overflow: auto;
+}
+.inner{
+    background-color: #8c897a;
+    max-width: 350px;
+    height: 100%;
+    flex-grow: 1;  /* Make the elements grow equally */
+    flex-shrink: 0; /* Prevent shrinking */
+    flex-basis: 0;  /* Ensure they all start from equal size */
+    width: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-around;
+    align-items:center;  /* Ensure they share the space equally */
+}
+.conten{
+    font-family: "poppins",poppins-bold;
+    padding-right: 10px;
+    font-size: 15px;
+    white-space: 'normal';
+    word-wrap: 'break-word';
+    flex-basis:content;
+}
+.foot{
+    display:flex;
+    flex-direction: row-reverse;
+    font-family: "poppins", extra-light;
+    color: white;
+    margin-right:30px ;
+}  
+/* form {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: #cebc9d;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  input[type="number"],
+  input[type="text"],
+  textarea {
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 100%;
+    max-width: 500px;
+  }
+  
+  input[type="number"]:focus,
+  input[type="text"]:focus,
+  textarea:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+  
+  button[type="submit"] {
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 150px;
+    margin-top: 10px;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+  
+  textarea {
+    min-height: 100px;
+    resize: vertical;
+  }
+  
+  input[type="number"] {
+    width: 120px;
+  }
+   */
