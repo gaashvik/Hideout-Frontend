@@ -481,7 +481,7 @@ const AvailableHotels = () => {
                                 return hotelDetails.Images[i];
                               }
                             }
-                            return "http://74.163.88.36:8080/api/placeholder/400/300";
+                            return "https://74.163.88.36:8080/api/placeholder/400/300";
                           })()
                         }
                         alt={hotelDetails.HotelName}
