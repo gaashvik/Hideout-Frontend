@@ -8,6 +8,7 @@ import HeadlineCards from './HeadLineCards';
 import Feature from './Features';
 
 export default function Home() {
+  const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:3000';
   const [topRatedPlaces, setTopRatedPlaces] = useState([]);
 
   useEffect(() => {
@@ -17,7 +18,7 @@ export default function Home() {
 
   const fetchTopRatedPlaces = async () => {
     try {
-      const response = await axios.get('/api/places/top-rated-3');
+      const response = await axios.get(`${backendUrl}/api/places/top-rated-3`);
       // Limit to only 3 places
       setTopRatedPlaces(response.data.slice(0, 3));
     } catch (error) {

@@ -14,11 +14,12 @@ const AvailableFlights = () => {
   const [selectedFlight, setSelectedFlight] = useState(null);
   const navigate = useNavigate();
 
+  const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:3000';
   const searchFlights = async () => {
     setLoading(true);
     try {
       console.log("🔄 Searching Flights...");
-      const response = await fetch("/api/flights/search", {
+      const response = await fetch(`${backendUrl}/api/flights/search`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
