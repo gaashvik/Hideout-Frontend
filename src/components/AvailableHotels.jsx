@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { FaMapMarkerAlt, FaPhone, FaStar, FaClock, FaCreditCard, FaUser, FaEnvelope } from "react-icons/fa";
-
+ const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:3000';
 const Dialog = ({ children, open, onOpenChange }) => {
   if (!open) return null;
   
@@ -149,7 +149,7 @@ const AvailableHotels = () => {
           MealType: "All",
         };
 
-        const response = await fetch("https://hideoutapp-fwcagyb3fkh9gha0.centralindia-01.azurewebsites.net/api/hotels/search", {
+        const response = await fetch(`${backendUrl}/api/hotels/search`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(requestBody),
@@ -176,7 +176,7 @@ const AvailableHotels = () => {
 
   const fetchHotelDetails = async (hotelCode) => {
     try {
-      const response = await fetch("https://hideoutapp-fwcagyb3fkh9gha0.centralindia-01.azurewebsites.net/api/hotels/details", {
+      const response = await fetch(`${backendUrl}/api/hotels/details`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ hotelCode }),
@@ -481,7 +481,7 @@ const AvailableHotels = () => {
                                 return hotelDetails.Images[i];
                               }
                             }
-                            return "https://74.163.88.36:8080/api/placeholder/400/300";
+                            return `${backendUrl}/api/placeholder/400/300`;
                           })()
                         }
                         alt={hotelDetails.HotelName}

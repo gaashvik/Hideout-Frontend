@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { motion } from "framer-motion";
 import { useSelector } from "react-redux";
-
+ const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:3000';
 const UserTrips = () => {
   const [trips, setTrips] = useState([]);
     const { currentUser } = useSelector((state) => state.user);
@@ -13,7 +13,7 @@ const UserTrips = () => {
     const fetchUserTrips = async () => {
       try {
         const response = await axios.get(
-          `/api/tripPlan/trips/user/${currentUser._id}`
+          `${backendUrl}/api/tripPlan/trips/user/${currentUser._id}`
         );
         setTrips(response.data);
       } catch (error) {

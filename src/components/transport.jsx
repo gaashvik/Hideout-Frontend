@@ -5,7 +5,7 @@ import { Card } from "../components/Card";
 import SectionHeader from "../components/SectionHeader";
 
 const mapsapikey=import.meta.env.VITE_MAPS_API;
-
+ const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:3000';
 const PlacesSection = ({ destination, toggleSelection, selectedPlaces }) => {
   const [places, setPlaces] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -39,7 +39,7 @@ const PlacesSection = ({ destination, toggleSelection, selectedPlaces }) => {
 
       // Fetch the places from your backend server
       const response = await fetch(
-        `/api/places/transport?lat=${latitude}&lng=${longitude}`
+        `${backendUrl}/api/places/transport?lat=${latitude}&lng=${longitude}`
       );
 
       if (!response.ok) {

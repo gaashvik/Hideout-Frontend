@@ -63,14 +63,14 @@ import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Heart, MapPin, Share2, ThumbsUp, MessageCircle } from 'lucide-react';
 import axios from 'axios';
-
+ const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:3000';
 const Uploaded = () => {
   const { currentUser } = useSelector((state) => state.user);
   const [userRecommendations, setUserRecommendations] = useState([]);
   const [hoveredId, setHoveredId] = useState(null);
 
   useEffect(() => {
-    axios.get(`http://localhost:3000/api/places/user_uploads/${currentUser._id}`)
+    axios.get(`${backendUrl}/api/places/user_uploads/${currentUser._id}`)
       .then(response => {
         console.log(response.data);
         setUserRecommendations(response.data);

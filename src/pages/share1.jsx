@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useSelector } from 'react-redux';
 import { Camera, MapPin, Type, Navigation, FileImage } from 'lucide-react';
 const apikey=import.meta.env.VITE_MAPS_API;
+ const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:3000';
 // Card Components
 const Card = ({ children, className = '' }) => (
   <div className={`bg-white rounded-xl overflow-hidden ${className}`}>
@@ -190,7 +191,7 @@ const FormComponent = () => {
         }
       });
 
-      const response = await axios.post('http://localhost:3000/api/upload', formDataToSend, {
+      const response = await axios.post(`${backendUrl}/api/upload`, formDataToSend, {
         headers: { 'Content-Type': 'multipart/form-data' }
       });
       alert(response.data.msg);

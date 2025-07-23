@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { signInStart, signInSuccess, signInFailure } from '../redux/user/userSlice';
 import OAuth from '../components/OAuth';
 import ImageCaptcha from '../components/capcha';
-
+ const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:3000';
 export default function SignIn() {
   const [formData, setFormData] = useState({});
   const [showCaptcha, setShowCaptcha] = useState(false);
@@ -12,7 +12,7 @@ export default function SignIn() {
   const { loading, error } = useSelector((state) => state.user);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
+ const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:3000';
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -34,7 +34,7 @@ export default function SignIn() {
 
     try {
       dispatch(signInStart());
-      const res = await fetch('/api/auth/signin', {
+      const res = await fetch(`${backendUrl}/api/auth/signin`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),

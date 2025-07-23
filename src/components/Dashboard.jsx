@@ -21,7 +21,7 @@ import Chatbot from "./chatbot";
 import Select from "./selectedPlaces";
 import axios from "axios";
 import { useSelector } from 'react-redux';
-
+ const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:3000';
 const Dashboard = () => {
   const { currentUser } = useSelector((state) => state.user);
   const location = useLocation();
@@ -56,7 +56,7 @@ const Dashboard = () => {
 
     try {
       // Make an API call to fetch the user's _id
-      const response = await axios.post("/api/tripPlan/check-user", { username: collaboratorUsername });
+      const response = await axios.post(`${backendUrl}/api/tripPlan/check-user`, { username: collaboratorUsername });
 
       if (response.data.userId) {
         // Add the collaborator to the state
@@ -94,7 +94,7 @@ const Dashboard = () => {
     };
 
     try {
-      const response = await axios.post("/api/tripPlan/trips", tripData);
+      const response = await axios.post(`${backendUrl}/api/tripPlan/trips`, tripData);
       if (response.data) {
         alert("Trip created successfully!");
         // Navigate to /dashboard/:tripid/:currentuser_id

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-
+ const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:3000';
 export default function Contact() {
   const [formData, setFormData] = useState({
     email: "",
@@ -17,7 +17,7 @@ export default function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:3000/api/places/contact", formData);
+      const response = await axios.post(`${backendUrl}/api/places/contact`, formData);
       setSuccessMessage(response.data.message);
       setFormData({ email: "", subject: "", message: "" });
     } catch (error) {

@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
 import { Calendar, MapPin, DollarSign, Users, FileText, Navigation } from 'lucide-react';
-
+ const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:3000';
 // Card Components
 const Card = ({ children, className = '' }) => (
   <div className={`bg-white rounded-xl overflow-hidden ${className}`}>
@@ -110,7 +110,7 @@ const CreateRide = () => {
     try {
       setLoading(true);
       setError('');
-      const response = await axios.post('http://localhost:3000/api/addtrip', formData);
+      const response = await axios.post(`${backendUrl}/api/addtrip`, formData);
       alert(response.data.msg);
     } catch (error) {
       console.error('Error:', error);

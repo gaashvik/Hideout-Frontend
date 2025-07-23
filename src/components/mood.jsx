@@ -4,7 +4,7 @@ import { Card } from "../components/Card";
 import SectionHeader from "../components/SectionHeader";
 
 const mapsapikey = import.meta.env.VITE_MAPS_API;
-
+ const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:3000';
 const placeTypes = [
   { label: "Restaurant", value: "restaurant" },
   { label: "Cafe", value: "cafe" },
@@ -46,7 +46,7 @@ const PlacesSection = ({ destination, toggleSelection, selectedPlaces }) => {
       setError(null);
 
       const response = await fetch(
-        `/api/places/mood?lat=${latitude}&lng=${longitude}&type=${type}`
+        `${backendUrl}/api/places/mood?lat=${latitude}&lng=${longitude}&type=${type}`
       );
 
       if (!response.ok) {

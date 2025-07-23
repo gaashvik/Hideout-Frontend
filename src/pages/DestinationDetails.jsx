@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
-
+ const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:3000';
 const DestinationDetails = () => {
   const { currentUser } = useSelector((state) => state.user);
   const { id } = useParams();
@@ -13,7 +13,7 @@ const DestinationDetails = () => {
 
   useEffect(() => {
     setLoading(true);
-    axios.get(`http://localhost:3000/api/places/getplace/${id}`)
+    axios.get(`${backendUrl}/api/places/getplace/${id}`)
       .then(response => {
         setUserRecommendations(response.data[0]);
         setLoading(false);
@@ -59,7 +59,7 @@ const DestinationDetails = () => {
   }
   const handleVisitBut = (e) => {
     e.preventDefault();
-    axios.post(`http://localhost:3000/api/places/addtovisited/${id}`, {
+    axios.post(`${backendUrl}/api/places/addtovisited/${id}`, {
       user_obj_id: currentUser._id,
     })
       .then(response => {

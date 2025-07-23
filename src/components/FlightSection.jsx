@@ -121,7 +121,7 @@ import { useNavigate } from "react-router-dom";
 import { PlaneTakeoff, Pin } from "lucide-react";
 import { Card } from "../components/Card";
 import SectionHeader from "../components/SectionHeader";
-
+ const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:3000';
 const FlightsSection = ({destination, departureAirport, destinationAirport, startDate}) => {
   const [flights, setFlights] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -133,7 +133,7 @@ const FlightsSection = ({destination, departureAirport, destinationAirport, star
     setError(null);
 
     try {
-      const response = await fetch("/api/flights/search", {
+      const response = await fetch(`${backendUrl}/api/flights/search`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-
+ const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:3000';
 const Shared = () => {
   const { currentUser } = useSelector((state) => state.user);
   const [userRecommendations, setUserRecommendations] = useState([]);
@@ -15,7 +15,7 @@ const Shared = () => {
 
   useEffect(() => {
     // Fetch user recommendations
-    axios.get(`http://localhost:3000/api/places/user-rec/${currentUser._id}/${currentUser.username}`)
+    axios.get(`${backendUrl}/api/places/user-rec/${currentUser._id}/${currentUser.username}`)
       .then(response => {
         setUserRecommendations(response.data);
       })
@@ -33,7 +33,7 @@ const Shared = () => {
           setCoordinates({ latitude, longitude });
 
           // Fetch georecommendations based on user location and selected max distance
-          axios.get(`http://localhost:3000/api/places/georec/?latitude=${latitude}&longitude=${longitude}&maxDistance=${maxDistance}&userId=${currentUser._id}`)
+          axios.get(`${backendUrl}/api/places/georec/?latitude=${latitude}&longitude=${longitude}&maxDistance=${maxDistance}&userId=${currentUser._id}`)
             .then(response => {
               setGeoRecommendations(response.data);
             })
@@ -52,7 +52,7 @@ const Shared = () => {
 
   useEffect(() => {
     // Fetch type-based recommendations
-    axios.get(`http://localhost:3000/api/places/type-rec/random?userId=${currentUser._id}`)
+    axios.get(`${backendUrl}/api/places/type-rec/random?userId=${currentUser._id}`)
       .then(response => {
         setType(response.data.type);
         setRecommendations(response.data.recommendations);

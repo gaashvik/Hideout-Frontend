@@ -82,7 +82,7 @@ import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
 import { MapPin, Calendar, DollarSign, Users, AlertCircle, ArrowRight } from 'lucide-react';
-
+ const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:3000';
 // Internal Card Components
 const Card = ({ className, children, ...props }) => {
   return (
@@ -152,7 +152,7 @@ const Ride = () => {
   useEffect(() => {
     const fetchRideDetails = async () => {
       try {
-        const response = await axios.get(`/api/trips/getone/${id}`);
+        const response = await axios.get(`${backendUrl}/api/trips/getone/${id}`);
         setRide(response.data[0]);
       } catch (error) {
         console.error('Error fetching ride details:', error);
@@ -166,7 +166,7 @@ const Ride = () => {
   const handleJoinTrip = async () => {
     try {
       setLoading(true);
-      const response = await axios.post(`/api/trips/${id}/join/${currentUser._id}`);
+      const response = await axios.post(`${backendUrl}/api/trips/${id}/join/${currentUser._id}`);
       alert(response.data.message);
     } catch (error) {
       console.error('Error joining trip:', error);

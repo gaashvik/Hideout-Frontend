@@ -16,6 +16,7 @@ import FlightsSection from "./FlightSection";
 import  Select  from "./selectedPlaces";
 import Chatbot from "./chatbot";
 import PackingChecklistSection from "./dash_trip/checklist";
+ const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:3000';
 const DashboardTripPage = () => {
   const { tripid, currentuser_id } = useParams();
   const [trip, setTrip] = useState(null);
@@ -43,7 +44,7 @@ const DashboardTripPage = () => {
   useEffect(() => {
     const fetchTrip = async () => {
       try {
-        const response = await axios.get(`/api/tripPlan/trips/${tripid}`);
+        const response = await axios.get(`${backendUrl}/api/tripPlan/trips/${tripid}`);
         const tripData = response.data;
 
         if (

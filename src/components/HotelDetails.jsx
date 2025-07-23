@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
-
+ const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:3000';
 const HotelDetails = () => {
     const location = useLocation();
     const queryParams = new URLSearchParams(location.search);
@@ -15,7 +15,7 @@ const HotelDetails = () => {
 
         const fetchHotelDetails = async () => {
             try {
-                const response = await axios.post("/api/hotels/details", { hotelCode });
+                const response = await axios.post(`${backendUrl}/api/hotels/details`, { hotelCode });
                 setHotel(response.data.HotelDetails[0]);
             } catch (err) {
                 setError("Failed to load hotel details.");

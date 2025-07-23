@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 import { Heart, Eye, CheckCircle, Star } from 'lucide-react';
 import { User, MapPin, Clock } from 'lucide-react';
 const apikey = import.meta.env.VITE_MAPS_API;
-
+ const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:3000';
 const DestinationDetails = () => {
   const { currentUser } = useSelector((state) => state.user);
   const { id } = useParams();
@@ -25,7 +25,7 @@ const DestinationDetails = () => {
 
   useEffect(() => {
     setLoading(true);
-    axios.get(`http://localhost:3000/api/places/getplace/${id}`)
+    axios.get(`${backendUrl}/api/places/getplace/${id}`)
       .then(response => {
         setUserRecommendations(response.data[0]);
         setLoading(false);
@@ -35,7 +35,7 @@ const DestinationDetails = () => {
         setLoading(false);
       });
 
-    axios.get(`http://localhost:3000/api/likes/${id}`)
+    axios.get(`${backendUrl}/api/likes/${id}`)
       .then(response => {
         setLikeCount(response.data.count);
       })
@@ -69,14 +69,14 @@ const DestinationDetails = () => {
   }, [userRecommendations, mapLoaded]);
 
   useEffect(() => {
-    axios.get(`/api/places/reviews/${id}`)
+    axios.get(`${backendUrl}/api/places/reviews/${id}`)
       .then(response => setReviews(response.data.reviews))
       .catch(error => console.error('Error fetching reviews:', error));
   }, [id]);
 
   useEffect(() => {
     if (currentUser) {
-      axios.get(`/api/likes/${id}/${currentUser._id}`)
+      axios.get(`${backendUrl}/api/likes/${id}/${currentUser._id}`)
         .then(response => {
           setIsLiked(response.data.liked);
         })
@@ -91,23 +91,23 @@ const DestinationDetails = () => {
     }
 
     if (isLiked) {
-      axios.delete(`/api/likes/${id}/${currentUser._id}`)
+      axios.delete(`${backendUrl}/api/likes/${id}/${currentUser._id}`)
         .then(() => {
           setIsLiked(false);
-          return axios.get(`/api/likes/${id}`);
+          return axios.get(`${backendUrl}/api/likes/${id}`);
         })
         .then(response => {
           setLikeCount(response.data.count);
         })
         .catch(error => console.error('Error unliking the place:', error));
     } else {
-      axios.post(`/api/likes`, {
+      axios.post(`${backendUrl}/api/likes`, {
         place_obj_id: id,
         user_obj_id: currentUser._id,
       })
         .then(() => {
           setIsLiked(true);
-          return axios.get(`/api/likes/${id}`);
+          return axios.get(`${backendUrl}/api/likes/${id}`);
         })
         .then(response => {
           setLikeCount(response.data.count);
@@ -118,7 +118,7 @@ const DestinationDetails = () => {
 
   const handleVisitBut = (e) => {
     e.preventDefault();
-    axios.post(`/api/places/addtovisited/${id}`, {
+    axios.post(`${backendUrl}/api/places/addtovisited/${id}`, {
       user_obj_id: currentUser._id,
     })
       .then(response => {
@@ -141,7 +141,7 @@ const DestinationDetails = () => {
       alert('You need to be logged in to add a review.');
       return;
     }
-    axios.post(`/api/places/addrev`, {
+    axios.post(`${backendUrl}/api/places/addrev`, {
       ...newReview,
       place_obj_id: id,
       user_obj_id: currentUser._id,

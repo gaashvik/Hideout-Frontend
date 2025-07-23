@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Star, Map, Filter, Heart, MessageCircle, Share2, MapPin } from 'lucide-react';
 import axios from 'axios';
-
+ const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:3000';
 const Places = () => {
   const [allPlaces, setAllPlaces] = useState([]);
   const [topRatedPlaces, setTopRatedPlaces] = useState([]);
@@ -17,7 +17,7 @@ const Places = () => {
 
   const fetchTopRatedPlaces = async () => {
     try {
-      const response = await axios.get('http://localhost:3000/api/places/top-rated');
+      const response = await axios.get(`${backendUrl}/api/places/top-rated`);
       setTopRatedPlaces(response.data);
       setAllPlaces(response.data);
     } catch (error) {

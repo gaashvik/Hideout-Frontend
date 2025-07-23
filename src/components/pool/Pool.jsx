@@ -89,7 +89,7 @@ import { motion } from 'framer-motion';
 import tripPoolingImage from "./img1.jpeg";
 
 import { FaCar, FaClock, FaUsers, FaMapMarkerAlt, FaRoute, FaStar } from 'react-icons/fa';
-
+ const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:3000';
 const Pool = () => {
   const [rides, setRides] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -99,7 +99,7 @@ const Pool = () => {
     const fetchRides = async () => {
       try {
         setLoading(true);
-        const response = await axios.get('http://localhost:3000/api/trips');
+        const response = await axios.get(`${backendUrl}/api/trips`);
         setRides(response.data);
       } catch (error) {
         console.error('Error fetching rides:', error);

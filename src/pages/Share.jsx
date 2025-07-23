@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
-
+ const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:3000';
 const FormComponent = () => {
   const { currentUser, loading, error } = useSelector((state) => state.user);
   const [formData, setFormData] = useState({
@@ -93,7 +93,7 @@ const FormComponent = () => {
       formDataToSend.append('user_id', currentUser._id);
       formDataToSend.append('image', formData.image);
       formDataToSend.append('coordinates', JSON.stringify(formData.coordinates));
-      const response = await axios.post('http://localhost:3000/api/upload', formDataToSend, {
+      const response = await axios.post(`${backendUrl}/api/upload`, formDataToSend, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
