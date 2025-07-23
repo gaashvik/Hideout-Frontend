@@ -6,7 +6,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'https://74.163.88.36:8080',
+        target: 'https://hideout-be.brazilsouth.cloudapp.azure.com',
         secure: false,
       },
     },
