@@ -5,7 +5,7 @@ import { Send, X, MessageSquare, Loader2 } from "lucide-react";
 
 const apiKey = import.meta.env.VITE_GEMINI_API;
 const genAI = new GoogleGenerativeAI(apiKey);
-const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
 const Chatbot = ({ tripdets, cuisines, setCuisines, setChecklist }) => {
   const [isOpen, setIsOpen] = useState(false);

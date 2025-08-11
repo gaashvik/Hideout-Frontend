@@ -8,7 +8,7 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 const apiKey = import.meta.env.VITE_GEMINI_API; // Use your API key
 const genAI = new GoogleGenerativeAI(apiKey);
 console.log("got model")
-const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
+const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
 const ItinerarySection = ({ tripDetails, itinerary, setItinerary }) => {
   // const [itinerary, setItinerary] = useState([]);
