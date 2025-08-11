@@ -7,7 +7,7 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 // Initialize Gemini API
 const apiKey =import.meta.env.VITE_GEMINI_API; // Use your API key
 const genAI = new GoogleGenerativeAI(apiKey);
-const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
+const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash-lite" });
 
 const LocalCuisinesSection = ({ destination, cuisines, setCuisines }) => {
   // const [cuisines, setCuisines] = useState([]);
