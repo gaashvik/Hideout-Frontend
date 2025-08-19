@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
+ const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:3000';
 const ImageCaptcha = ({ onVerify }) => {
     const [selectedImages, setSelectedImages] = useState([]);
     const [captchaText, setCaptchaText] = useState('');
@@ -66,7 +67,7 @@ const ImageCaptcha = ({ onVerify }) => {
         setCaptchaText(`Please select all images containing ${selectedSet.name.toLowerCase()}s:`);
 
         setSelectedImages(displayedImages.map(imageUrl => ({
-            url: 'http://localhost:3000/capcha/' + imageUrl,
+            url: `${backendUrl}/capcha/` + imageUrl,
             correct: correctImages.includes(imageUrl),
             selected: false
         })));
