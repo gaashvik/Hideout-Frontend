@@ -5,7 +5,7 @@ import { Navigation2, Calendar, MapPin } from "lucide-react";
 const gemapiKey = import.meta.env.VITE_GEMINI_API;
 const mapsapiKey = import.meta.env.VITE_MAPS_API;
 const genAI = new GoogleGenerativeAI(gemapiKey);
-const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
 const generationConfig = {
   temperature: 1,
